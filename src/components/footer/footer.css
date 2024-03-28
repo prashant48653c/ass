@@ -1,0 +1,44 @@
+.footer{
+    display: flex;
+    padding: 4rem 8rem;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+.footer ul{
+    list-style: none;
+}
+.social{
+    display: flex;
+    gap: .9rem;
+    align-items: center;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+.footer-card{
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+.arrow-link{
+   display:flex;
+   align-items:center;
+   justify-content: flex-start;
+   gap:.3rem;
+}
+ 
+.footer-card h5{
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin: 1rem 0;
+}
+.footer-card a{
+    padding: .3rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+  transition: all .3s ease-in-out;
+}
+.footer-card a:hover{
+    color: var(--blue);
+    text-decoration: underline;
+}
+ 

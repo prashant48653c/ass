@@ -1,4 +1,8 @@
 import styles from './landing.module.css'
+import { FaArrowRight } from "react-icons/fa";
+
+
+
 const Landing:React.FC = () => {
   return (
     <div className={styles.container} >
@@ -7,8 +11,11 @@ const Landing:React.FC = () => {
 <p className={styles.p} >Unlock the depths of knowledge and foster connections in the dynamic realm of blogging. Welcome aboard! 👋🚀</p>
         </div>
         <div className={styles.btns}>
-        <button className="btnFill btn">Log in</button>
-        <button className="btnFill btn">Get Started</button>
+        <button className={`btnFill btn ${styles.btn}`}><span>Log in</span>
+        <FaArrowRight />
+        </button>
+        <button className={`btnFill btn ${styles.btn}`}><span>Get Started</span>
+        <FaArrowRight /></button>
         </div>
   
 

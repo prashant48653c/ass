@@ -9,10 +9,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
 }
 .btns{
     display: flex;
     gap: 1.3rem;
+    margin-top: 1rem;
+}
+  .btn{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 .landDetail{
 gap: 2rem;
