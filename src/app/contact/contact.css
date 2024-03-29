@@ -1,0 +1,60 @@
+.contact {
+    height: 100vh;
+    width: 100%;
+    padding: 1rem 6rem;
+    margin-bottom: 2rem;
+
+}
+
+.flex-area {
+    display: flex;
+    width: 100%;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.heading h2 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin: 2rem 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+padding-top: 2rem;
+}
+
+.input {
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    border: .1px solid grey;
+    border-radius: 3rem;
+    font-size: 2rem;
+    padding: .7rem .9rem;
+    color: var(--purple);
+}
+
+.input input {
+    font-size: 1.5rem;
+
+    outline: none;
+    border: none;
+
+
+}
+
+.textarea {
+    font-family: sans-serif;
+  
+    padding: .7rem .9rem;
+     
+    outline: none;
+    border: .1px solid grey;
+    border-radius: .5rem;
+    font-size: 2rem;
+
+}

@@ -52,7 +52,7 @@ const Footer:React.FC = () => {
 
   </div>
   <div>
-    <p> © Copyright 2024 Blogy All Right Researved</p>
+    <p> © Copyright 2024 Bloggy All Right Researved</p>
   </div>
  </div>
 
