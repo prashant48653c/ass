@@ -1,21 +1,33 @@
 'use client'
 import { useRef, useState } from 'react'
-import { IoEyeOutline } from 'react-icons/io5'
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5'
 
 const PasswordToggle:React.FC = () => {
-    const passRef=useRef<HTMLInputElement>(null);
+   
     const [visible, setVisible] = useState(false)
+    const [type, setType] = useState('password')
+
     const getPassword=()=>{
-        console.log("first")
-        setVisible(!visible)
-        let pass=passRef.current;
-        console.log(pass)
-        
+      setVisible(!visible)
+      if(visible){
+       setType('text')
+      }else{
+        setType('password')
+      }
+        console.log("Visibility changed")
+     
     }
   return (
     <>
-      <input ref={passRef} type="password" placeholder='Password' />
-        <IoEyeOutline onClick={getPassword} size={22} />
+      <input  type={type} placeholder='Password' />
+      {
+        visible ?
+        <IoEyeOffOutline onClick={getPassword} size={22} />
+:
+<IoEyeOutline onClick={getPassword} size={22} />
+
+      }
+
 
     </>
   )

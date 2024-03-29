@@ -17,9 +17,10 @@ border: 1px solid var(--blue);
 .auth-box{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 35rem;
-    min-height: 30rem;
+    max-width: 35rem;
+    min-height: 32rem;
     height: fit-content;
-    padding:  1.8rem 1rem ;
+    padding:  1.8rem 1.8rem ;
     margin: 2rem 0;
      
 }

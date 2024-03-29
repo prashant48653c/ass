@@ -1,6 +1,7 @@
 import React from 'react'
 import Links from './Links'
 import { MdAlbum } from "react-icons/md";
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -13,8 +14,13 @@ const Navbar = () => {
    <Links/>
 </ul>
 <div className="nav-btns">
-<button className="btnFill btn">Login</button>
-<button className="btnOutline btn">Signup</button>
+ 
+  <Link className="btnFill btn" href='/login' >Login</Link>
+ 
+ 
+<Link className="btnOutline btn" href='/register' >Register</Link>
+
+ 
 
 </div>
     </nav>

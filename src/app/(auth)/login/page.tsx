@@ -1,9 +1,10 @@
+import Login from '@/components/login/Login'
 import React from 'react'
-
+import './auth.css'
 const AuthPage:React.FC = () => {
   return (
-    <div>
-        Auth page
+    <div className='auth-container' >
+     <Login/>
     </div>
   )
 }

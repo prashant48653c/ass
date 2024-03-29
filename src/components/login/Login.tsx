@@ -29,7 +29,10 @@ const Login:React.FC = () => {
     </div>
     <div>
     <button className="btn btnFill">Login</button>
-    <button className="btn btnOutline">Forgot Password?</button>
+    <div style={{textAlign:'center',margin:'1rem 0'}} >
+    <Link  href={'/forgot'} className="btn btnOutline">Forgot Password?</Link>
+    </div>
+  
     </div>
     <hr style={{color:'#ccc'}} />
 
