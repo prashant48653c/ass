@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { IoMdMail } from 'react-icons/io'
 import './about.css'
+import '../contact/contact.css'
 const AboutPage:React.FC = () => {
   return (
     <div className='contact'>
