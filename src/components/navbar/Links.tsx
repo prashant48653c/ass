@@ -29,7 +29,7 @@ inFeed:true
 },
 {
 title: "Blog",
-path: "/blog",
+path: "/feed",
 inFeed:false
 
 },
