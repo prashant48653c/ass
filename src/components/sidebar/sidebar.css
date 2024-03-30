@@ -1,0 +1,39 @@
+.sidebar h5{
+    font-size: 2rem;
+    font-weight: 800;
+}
+.sidebar h4{
+    font-size: 1.5rem;
+}
+.sidebar{
+    width: 35rem;
+    
+   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.sidebar-author{
+    display: flex;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem 1rem;
+    align-items: center;
+    border-radius: 3rem;
+ 
+}
+.popular-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+}
+.sidebar .btn{
+    padding: .9rem;
+
+    height: fit-content;
+    border-radius: 2rem;
+}

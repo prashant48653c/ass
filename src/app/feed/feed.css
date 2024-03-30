@@ -2,6 +2,8 @@
     width: 100%;
     height: fit-content;
     padding: 2rem 8rem;
+display: flex;
+justify-content: space-between;
 
 
 }

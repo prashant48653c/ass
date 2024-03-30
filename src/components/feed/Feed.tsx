@@ -8,11 +8,11 @@ const FeedSingle:React.FC = () => {
   return (
     <div className='feed-single' >
 <div>
-    <Image style={{borderRadius:'1rem'}} alt='blog image' width={150} height={100} src={'/bghome.avif'} />
+    <Image style={{borderRadius:'1rem'}} alt='blog image' width={170} height={120} src={'/blogPic.jpg'} />
 </div>
 <div className="blog-info">
     <div className="blog-author">
-    <Image alt='author image' className='author-img' width={30} height={30} src={'/bghome.avif'} />
+    <Image alt='author image' className='author-img' width={30} height={30} src={'/pp2.png'} />
         <Link href={'/author'}>Prashant Acharya</Link>
         <div className="tags">
             <div className="tag">Tech</div>
