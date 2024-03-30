@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import PasswordToggle from '../utilities/icons/PasswordToggle'
-
+import '../login/login.css'
 const Register:React.FC = () => {
   return (
     <div className='auth-box' >

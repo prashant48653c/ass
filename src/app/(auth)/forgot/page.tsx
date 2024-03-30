@@ -14,7 +14,8 @@ const Forgot = () => {
     setOtp(newVal)
   }
   return (
-    <div className='auth-box' >
+    <section className="auth-container">
+ <div className='auth-box' >
       <h5>Forgot Password?</h5>
       <p style={{ padding: '1rem 0', fontSize: '1.2rem' }} >We have sent an OTP code for verification to your registered email.Please insert the OTP code to set new password for your account.</p>
       <form action="" className="login-form">
@@ -40,6 +41,8 @@ const Forgot = () => {
 
       </form>
     </div>
+    </section>
+   
   )
 }
 
