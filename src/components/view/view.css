@@ -1,0 +1,45 @@
+.view-container{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.view-area{
+    padding: 3rem 0;
+    max-width: 50rem;
+  
+
+}
+.author-info-blog{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    padding-left: 0;
+    align-items: center;
+ 
+}
+.author-info-blog h6{
+    font-size: 1.6rem;
+    
+}
+.heading-detail h3{
+    font-size: 3rem;
+    padding: 1rem 0;
+}
+.blog-author-detail{
+    display: flex;
+    flex-direction: column;
+ 
+}
+ .blog-area p{
+    font-size: 1.6rem;
+line-height: 1.4;
+text-align: justify;
+margin: 1rem 0;
+ }
+ .reaction{
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+ }

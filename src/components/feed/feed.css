@@ -22,12 +22,17 @@
     border-radius: 30rem;
 }
 .tag{
-    background-color: var(--blue);
-    color: white;
+    background-color:#f2f2f2;
+    color: rgb(66, 63, 63);
     font-weight: 600;
     padding: .4rem;
     min-width: 3rem;
+    cursor: pointer;
     text-align: center;
+    transition: all 1s linear;
+}
+.tag:hover{
+    background-color: #ccc;
 }
 .blog-author{
     display: flex;

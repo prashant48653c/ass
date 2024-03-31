@@ -33,6 +33,12 @@ path: "/feed",
 inFeed:false
 
 },
+{
+    title: "Write",
+    path: "/create",
+    inFeed:false
+    
+    },
 ];
 return (
 <>

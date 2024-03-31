@@ -1,39 +1,64 @@
-.sidebar h5{
+.sidebar h5 {
     font-size: 2rem;
     font-weight: 800;
 }
-.sidebar h4{
+
+.sidebar h4 {
     font-size: 1.5rem;
 }
-.sidebar{
+
+.sidebar {
     width: 35rem;
-    
-   
+
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
 }
-.sidebar-author{
+
+.sidebar-author {
     display: flex;
     gap: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     width: fit-content;
     height: fit-content;
     padding: 2rem 1rem;
     align-items: center;
     border-radius: 3rem;
- 
+
 }
-.popular-detail{
+.sidebar-author:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+.popular-detail {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: .5rem;
 }
-.sidebar .btn{
+
+.sidebar .btn {
     padding: .9rem;
 
     height: fit-content;
     border-radius: 2rem;
+}
+
+.tagbox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.tagbox .tag {
+    padding: .6rem 1.5rem;
+    font-size: 1.3rem;
+    min-width: 3rem;
+    border-radius: 2rem;
+    height: fit-content;
 }
