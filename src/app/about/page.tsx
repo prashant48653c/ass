@@ -16,7 +16,7 @@ const AboutPage:React.FC = () => {
 Introducing Bloggy: your go-to platform for effortless blogging. With its user-friendly interface and customizable features, Bloggy makes sharing your thoughts, stories, and ideas a breeze. Join the vibrant community, express yourself creatively, and make your mark in the digital world with Bloggy.</p>
 
 <p>
-Discover the power of storytelling with Bloggy&apos;s robust features, designed to elevate your blogging experience to new heights. Seamlessly integrate multimedia elements such as images, videos, and interactive content to captivate your audience and bring your narratives to life.</p>
+Discover the power of storytelling with Bloggys robust features, designed to elevate your blogging experience to new heights. Seamlessly integrate multimedia elements such as images, videos, and interactive content to captivate your audience and bring your narratives to life.</p>
       </div>
       <div className="form-image">
         <Image width={450} alt='form-image' height={450} src={'/abt.svg'} />
