@@ -37,7 +37,7 @@ const Login:React.FC = () => {
     <hr style={{color:'#ccc'}} />
 
 <div className='extra'>
-    <p>Don&apos;t have an account?</p>
+    <p>Don't have an account?</p>
     <Link style={{color:'var(--blue)',fontWeight:600}} href='/signup'>Sign Up</Link>
 </div>
 
