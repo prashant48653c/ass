@@ -20,7 +20,8 @@
 .clip-pp{
    
     clip-path: circle(50% at 50% 50%);
- 
+ border: .3rem solid #eeeaea;
+ border-radius: 40rem;
 }
  .profile-details h5{
     font-size: 1.8rem;

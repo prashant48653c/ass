@@ -12,6 +12,7 @@ const FeedSingle: React.FC = () => {
     const navigate=()=>{
         router.push('/view')
     }
+    
 return (
 <div onClick={navigate} className='feed-single' >
 <div>

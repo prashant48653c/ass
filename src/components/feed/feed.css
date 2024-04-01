@@ -58,3 +58,35 @@
     gap: 1rem;
     padding: .5rem 0;
 }
+
+
+
+@media (max-width:1220px){
+   .feed-single{
+   
+    padding: 1rem 2rem;
+    max-width: 50rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    transition: all 1s ease-in;
+   }
+}
+
+@media (max-width:890px){
+   .feed-single{
+    padding: 1rem;
+
+   }
+}
+@media (max-width:870px){
+    .feed-single{
+    max-width: 45rem;
+    gap: 2rem;
+ 
+    }
+ }
+ 
