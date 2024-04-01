@@ -8,13 +8,13 @@ const Create = () => {
    const [value, setValue] = useState('');
 
   return (
-    <>
+    <div className='note-container'>
         <input type="text" placeholder='Title' className='input-head' />
         <ReactQuill placeholder='Your blog....' theme="snow" className='notepad' value={value} onChange={setValue} />
         <button className="btn btnFill btn-upload">Upload 
         <AiOutlineUpload size={18} />
         </button>
-    </>
+    </div>
   )
 }
 

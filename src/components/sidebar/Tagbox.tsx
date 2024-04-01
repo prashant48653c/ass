@@ -2,7 +2,7 @@ import React from 'react'
 import './sidebar.css'
 const Tagbox:React.FC = () => {
   return (
-    <>
+    <div className='tag-container'>
     <h5>Trending tags</h5>
     <div className='tagbox' >
         <div className="tag">Tech</div>
@@ -15,7 +15,7 @@ const Tagbox:React.FC = () => {
 
 
     </div>
-    </>
+    </div>
 
   )
 }

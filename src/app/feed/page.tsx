@@ -7,7 +7,10 @@ import Search from '@/components/search/Search'
 const Feed:React.FC = () => {
   return (
     <section className='feed-container'>
-      <div>
+        <div className='sidebar-box-mob' >
+        <Sidebar/>
+      </div>
+      <div className='feed-box1'>
         <Search/>
       <FeedSingle/>
 <FeedSingle/>
@@ -15,7 +18,7 @@ const Feed:React.FC = () => {
 <FeedSingle/>
 <PaginationUI/>
       </div>
-      <div>
+      <div className='sidebar-box-pc' >
         <Sidebar/>
       </div>
 

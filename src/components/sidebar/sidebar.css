@@ -31,6 +31,9 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 }
+.sidebar-box-mob{
+    display: none;
+ }
 
 .popular-detail {
     display: flex;
@@ -115,3 +118,29 @@
         gap: 1rem;
     } 
     }
+
+    
+@media (max-width:800px) {
+  
+    .sidebar-box-pc{
+       display: none;
+    }
+    .sidebar-box-mob{
+        display: block;
+     }
+     .author-box{
+        display: none;
+     }
+     .sidebar {
+      width: 50rem;
+    
+    
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    } 
+    .tagbox{
+        width: 100%;
+    }
+}

@@ -90,3 +90,54 @@
     }
  }
  
+ @media (max-width:800px) {
+    .feed-single{
+        min-width: 65rem;
+    }
+    .tagbox{
+        
+        min-width: 60rem;
+    }
+   
+ }
+
+ @media (max-width:700px) {
+    .feed-single{
+        min-width: 55rem;
+    }
+    .tagbox{
+        min-width: 55rem;
+    } 
+ }
+
+ @media (max-width:600px) {
+    .feed-single{
+        min-width: 45rem;
+    }
+    .tagbox{
+        min-width: 43rem;
+    } 
+ }
+
+ @media (max-width:500px) {
+    .feed-single{
+        max-width: 40rem;
+        min-width: 0;
+        padding: .8rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .tagbox{
+        min-width: 35rem;
+    } 
+    .blog-feed-img{
+width: 27rem;
+height: 15rem;
+    }
+ }
+
+ @media (max-width:500px) {
+    .tagbox{
+        min-width: 30rem;
+    }
+ }

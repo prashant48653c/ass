@@ -8,7 +8,7 @@
 
 .flex-area {
     display: flex;
-    width: 100%;
+    max-width: 100%;
     gap: 3rem;
     justify-content: center;
 }
@@ -57,4 +57,167 @@ padding-top: 2rem;
     border-radius: .5rem;
     font-size: 2rem;
 
+}
+
+@media (max-width:1230px){
+    .flex-area{
+       gap: 1rem; 
+    }
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 40rem;
+    }
+    .contact-img{
+        width: 50rem;
+    }
+}
+
+@media (max-width:1080px){
+  
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 38rem;
+    }
+    .contact-img{
+        width: 45rem;
+    }
+}
+
+@media (max-width:1000px){
+  
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 33rem;
+    }
+    .contact-img{
+        width: 40rem;
+    }
+}
+
+@media (max-width:900px){
+  
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 30rem;
+    }
+    .contact-img{
+        width: 38rem;
+    }
+}
+@media (max-width:840px){
+  
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 30rem;
+    }
+    .contact-img{
+        width: 35rem;
+    }
+}
+
+@media (max-width:790px){
+  
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 27rem;
+    }
+    .contact-img{
+        width: 32rem;
+    }
+}
+
+@media (max-width:730px){
+  
+    .input {
+        width: 20rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 27rem;
+    }
+    .contact-img{
+        width: 30rem;
+    }
+}
+
+@media (max-width:690px){
+  
+    .flex-area {
+        display: flex;
+        max-width: 100%;
+        gap: 3rem;
+      flex-direction: column
+      ;
+      align-items: center;
+    }
+    .contact-img{
+        display: none;
+    }
+    .input {
+        width: 40rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 47rem;
+    }
+     
+    
+}
+
+@media (max-width:530px){
+    .input {
+        width: 30rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 37rem;
+    }
+}
+
+@media (max-width:450px){
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 30rem;
+    }
+}
+
+@media (max-width:370px){
+    .input {
+        width: 25rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 27rem;
+    }
+}
+
+@media (max-width:350px){
+    .input {
+        width: 22rem;
+        font-size: 1.6rem;
+    }
+    .textarea{
+        max-width: 24rem;
+    }
 }

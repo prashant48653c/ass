@@ -29,3 +29,14 @@ outline: none;
     color: white;
     border-radius: .4rem;
 }
+@media (max-width:800px) {
+    .search-container{
+        align-items: flex-start;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .search-bar{
+        width: 40rem;
+    }
+}

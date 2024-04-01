@@ -14,3 +14,14 @@
     gap: .5rem;
     margin-top: 6rem;
 }
+.note-container{
+    padding: 3rem 8rem;
+}
+@media (max-width:500px) {
+   .note-container{
+    padding: 3rem 1rem;
+   } 
+   .btn-upload{
+    margin-top: 8rem;
+   }
+}

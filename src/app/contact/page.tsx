@@ -27,7 +27,7 @@ const ContactPage:React.FC = () => {
         <input type="email" placeholder='Your email' />
 
         </div>
-<textarea   className='textarea' name="messege"   cols={40} rows={10}>
+<textarea  className='textarea' name="messege"   cols={40} rows={10}>
    
 </textarea>
 <button className='btn btnFill'>Send</button>
@@ -35,7 +35,7 @@ const ContactPage:React.FC = () => {
 
       </form>
       <div className="form-image">
-        <Image width={600} alt='form-image' height={500} src={'/contact.svg'} />
+        <Image className='contact-img' width={600} alt='form-image' height={500} src={'/contact.svg'} />
       </div>
       </div>
    

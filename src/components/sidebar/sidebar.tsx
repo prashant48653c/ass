@@ -7,12 +7,15 @@ const Sidebar:React.FC = () => {
   return (
     <div className='sidebar' >
       <Tagbox/>
-        <h5>Popular authors</h5>
+      <div className='author-box' >
+      <h5>Popular authors</h5>
 
 
-      <Author/>
-      <Author/>
-      <Author/>
+<Author/>
+<Author/>
+<Author/>
+      </div>
+      
 
 
 

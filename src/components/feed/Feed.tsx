@@ -16,7 +16,7 @@ const FeedSingle: React.FC = () => {
 return (
 <div onClick={navigate} className='feed-single' >
 <div>
-<Image style={{ borderRadius: '1rem' }} alt='blog image' width={170} height={120} src={'/blogPic.jpg'} />
+<Image className='blog-feed-img' style={{ borderRadius: '1rem' }} alt='blog image' width={170} height={120} src={'/blogPic.jpg'} />
 </div>
 <div className="blog-info">
 <div className="blog-author">
