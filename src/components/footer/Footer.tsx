@@ -10,7 +10,7 @@ const Footer:React.FC = () => {
     <div className='footer' >
  <div className="footer-card">
   <h5>Links</h5>
-  <ul>
+  <ul className='footerLinks'>
     <li><a className='arrow-link' href=""><MdArrowOutward />Home </a></li>
     <li><a className='arrow-link' href=""><MdArrowOutward />Blogs</a></li>
     <li><a className='arrow-link' href=""><MdArrowOutward />Get Started</a></li>
@@ -22,7 +22,7 @@ const Footer:React.FC = () => {
 
  <div className="footer-card">
   <h5>Updates</h5>
-  <ul>
+  <ul className='footerLinks' >
     <li><a className='arrow-link' href=""><MdArrowOutward />About</a></li>
     <li><a className='arrow-link' href=""><MdArrowOutward />News</a></li>
     <li><a className='arrow-link' href=""><MdArrowOutward />Terms and Conditions</a></li>
@@ -34,7 +34,7 @@ const Footer:React.FC = () => {
 
  <div className="footer-card">
   <h5>Contacts</h5>
-  <ul>
+  <ul className='footerLinks' >
     <li><a className='arrow-link' href=""><AiOutlineMail />Email</a></li>
     <li><a className='arrow-link' href=""><AiOutlinePhone />071-458360</a></li>
     <li><a className='arrow-link' href=""><AiOutlineAim  />Butwal-Rupandehi</a></li>

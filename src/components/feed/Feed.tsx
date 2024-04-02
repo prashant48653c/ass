@@ -6,32 +6,53 @@ import React from 'react'
 import './feed.css'
 import { AiOutlineHeart, AiOutlineUserAdd } from 'react-icons/ai'
 
-const FeedSingle: React.FC = () => {
+
+interface FEEDDATAPROP{
+    blog:{
+        heading:string,
+        desc:string,
+        author:{
+          name:string,
+          pic:string
+        },
+        blogPic:string,
+        tags:string[]
+    }
+  
+  }
+
+  
+const FeedSingle: React.FC<FEEDDATAPROP> = ({blog}) => {
 
     const router=useRouter()
     const navigate=()=>{
         router.push('/view')
     }
+    console.log(blog)
     
 return (
 <div onClick={navigate} className='feed-single' >
 <div>
-<Image className='blog-feed-img' style={{ borderRadius: '1rem' }} alt='blog image' width={170} height={120} src={'/blogPic.jpg'} />
+<Image className='blog-feed-img' style={{ borderRadius: '1rem' }} alt='blog image' width={170} height={120} src={blog.blogPic} />
 </div>
 <div className="blog-info">
 <div className="blog-author">
 <Image alt='author image' className='author-img' width={30} height={30} src={'/pp2.png'} />
-<Link href={'/profile'}>Prashant Acharya</Link>
+<Link href={'/profile'}>{blog.author.name}</Link>
 <div className="tags">
-<div className="tag">Tech</div>
-<div className="tag">AI</div>
+    {
+        blog.tags.map((tag,j)=>{
+return <div className="tag" key={j} >{tag}</div>
+            
+        })
+    }
 
 </div>
 </div>
 
 <div className="blog-details">
-<h5>Secret of Living in Earth</h5>
-<p>The developemnt of standard industry is improving the average quality of life of a normal person...</p>
+<h5>{blog.heading}</h5>
+<p>{blog.desc}</p>
 </div>
 <div className='icons-flex'>
 <AiOutlineHeart size={23} />

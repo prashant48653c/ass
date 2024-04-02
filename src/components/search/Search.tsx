@@ -1,7 +1,8 @@
 import React from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { FaFilter } from "react-icons/fa";
+
  import './search.css'
+import { BiSort } from 'react-icons/bi';
 
  
 const Search:React.FC = () => {
@@ -10,7 +11,7 @@ const Search:React.FC = () => {
  <div className='search-bar'>
         <AiOutlineSearch size={24} />
         <input type="text" placeholder='Search blog' />
-
+<BiSort size={24} />
     </div>
    
     </div>

@@ -7,8 +7,8 @@ import Footer from "@/components/footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BlogMe - Your blogging platform",
-  description: "The landing page for the BlogMe application",
+  title: "Bloggy - Your blogging platform",
+  description: "Welcome to Bloggy",
 };
 
 export default function RootLayout({
