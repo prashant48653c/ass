@@ -28,7 +28,7 @@ const FeedSingle: React.FC<FEEDDATAPROP> = ({blog}) => {
     const navigate=()=>{
         router.push('/view')
     }
-    console.log(blog)
+   
     
 return (
 <div onClick={navigate} className='feed-single' >

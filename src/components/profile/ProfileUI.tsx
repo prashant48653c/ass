@@ -8,9 +8,8 @@ const ProfileUI:React.FC = () => {
     <div className='profile-container' >
         <div className="blog-profile">
         <h3>All Blogs</h3>
-        <FeedSingle/>
-        <FeedSingle/>
-        <FeedSingle/>
+       
+         
         <PaginationUI/>
         </div>
         <div className="profile-details">

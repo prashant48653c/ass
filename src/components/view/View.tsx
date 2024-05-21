@@ -1,4 +1,6 @@
+'use client'
 import React from 'react'
+
 import './view.css'
 import Image from 'next/image'
 import Author from '../sidebar/Author'
@@ -8,10 +10,18 @@ import { MdOutlineContentCopy } from 'react-icons/md'
 import Copy from '../utilities/icons/Copy'
 import Viewcontent from './Viewcontent'
 import Link from 'next/link'
+ 
 
 
-
-const View = () => {
+const View:React.FC = () => {
+    const handleSound = (): void => {
+        console.log("first");
+        const text = "Earth, our precious celestial home, is a masterpiece of cosmic wonders. Nestled in the vastness of space, it teems with life, harboring ecosystems that have evolved over billions of years. From the towering mountains to the depths of the ocean abyss, Earth's diverse landscapes astonish with their beauty and complexity.";
+        const utterance  = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance );
+    };
+    
+    
 return (
 <div className='view-container' >
 <div className="view-area">
@@ -42,7 +52,10 @@ return (
 </div>
 <div className="reaction">
     <AiOutlineHeart size={23}/>
-    <AiOutlineSound  size={23}/>
+    <div style={{cursor:'pointer'}} onClick={handleSound} >
+    <AiOutlineSound size={23}/>
+
+    </div>
     <Copy/>
     <AiOutlineEdit  size={23}/>
     <AiOutlineDelete  size={23}/>
