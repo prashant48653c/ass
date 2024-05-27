@@ -1,25 +1,18 @@
 import { useRouter } from 'next/router'
-
  
-  const router = useRouter()
-
   export async function loginUser(userData) {
-    const formData = new FormData(userData)
-    const email = formData.get('email')
-    const password = formData.get('password')
-
-    const response = await fetch(`${process.env.API_ROUTE}/auth/login`, {
+    const response = await fetch(`http://localhost:4000/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(userData),
     })
 
     if (response.ok) {
-        console.log(response)
-      router.push('/feed')
-      return response
+      const data=await response.json()
+        console.log(data)
+      return data
     } else {
-    console.log("error")
+    console.log("error at login")
     }
   }
  
@@ -28,22 +21,21 @@ import { useRouter } from 'next/router'
 
   
   export async function signUp(userData) {
-    const formData = new FormData(userData)
-    const email = formData.get('email')
-    const password = formData.get('password')
-    const username = formData.get('username')
+   
+    const {username,email,password}= userData
+console.log("Inside the signup function",userData)
 
-
-    const response = await fetch(`${process.env.API_ROUTE}/auth/signup`, {
+    const response = await fetch(`http://localhost:4000/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({username, email, password }),
     })
+    
 
     if (response.ok) {
-        console.log(response)
-      router.push('/feed')
-      return response
+       
+    const data=await response.json()
+      return data
     } else {
     console.log("error")
     }

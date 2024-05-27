@@ -1,57 +1,66 @@
-import { useRouter } from 'next/router'
 
+  export async function uploadBlog(blogData) {
  
-  const router = useRouter()
-
-  export async function uploadBlog(userData) {
-    const formData = new FormData(userData)
-    const title = formData.get('title')
-    const blog = formData.get('blog')
-    const author = formData.get('author')
-    const tags = formData.get('tags')
+console.log("first")
+    const {title,desc}=blogData
 
 
 
-    const response = await fetch(`${process.env.API_ROUTE}/blog/create`, {
+    const response = await fetch(`http://localhost:4000/blogs/create`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title,blog,author,tags }),
+      headers: { 'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
+       },
+      body: JSON.stringify({ head:title,desc,authorName:'wendy',tags:['Web'],blogImg:'' }),
     })
 
     if (response.ok) {
-        console.log(response)
-      router.push('/profile')
-      return response
+       let data=await response.json()
+       console.log(data)
+     
+      return data
     } else {
     console.log("error")
     }
   }
  
+  export async function getAllBlog(query) {
+    try {
+    const response=await fetch(`http://localhost:4000/blogs?page=${query.page}`)
 
-  
-
-  
-  export async function signUp(userData) {
-    const formData = new FormData(userData)
-    const email = formData.get('email')
-    const password = formData.get('password')
-    const username = formData.get('username')
-
-
-    const response = await fetch(`${process.env.API_ROUTE}/auth/signup`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({username, email, password }),
-    })
-
-    if (response.ok) {
-        console.log(response)
-      router.push('/feed')
-      return response
-    } else {
-    console.log("error")
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+      throw error;
     }
   }
+
+  export async function getSingleBlog(id) {
+    try {
+    
+      const response = await fetch(`http://localhost:4000/blogs/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+      throw error;
+    }
+  }
+  
+
+  
+
+  
+ 
  
 
   

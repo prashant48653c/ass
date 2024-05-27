@@ -1,7 +1,11 @@
-import View from '@/components/view/View'
-import React from 'react'
+'use client'
 
+import View from '@/components/view/View'
+ 
+ 
 const ViewPage = () => {
+ 
+
   return (
    <View/>
   )

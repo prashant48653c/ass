@@ -4,9 +4,13 @@ import { MdOutlineContentCopy } from 'react-icons/md';
 
 
  
-const Copy = () => {
+
+interface CopyProp {
+  desc: string;
+}
+const Copy: React.FC<CopyProp> = ({ desc }) => {
     const handleCopy=()=>{
-        copy('this is copied')
+        copy(desc)
         console.log('copied')
     }
   return (
