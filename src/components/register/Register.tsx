@@ -7,7 +7,8 @@ import { signUp } from '@/api/Auth'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hook'
 import { setUserData } from '@/redux/slices/authSlice'
 import { setUserInfo } from '@/redux/slices/userSlice'
-import { useRouter } from 'next/router'
+import { Router, useRouter } from 'next/router'
+import { setCookie } from '@/helper/cookie'
  
 
 const Register: React.FC = () => {
@@ -27,10 +28,11 @@ const Register: React.FC = () => {
 
     console.log(userData)
   const data= await signUp(userData)
-    
-   localStorage.setItem('accesstoken',data.token)
-   localStorage.setItem('refreshtoken',data.refreshToken)
+    const {token,refreshToken}=data
+    setCookie("accesstoken",token,172800)
+    setCookie("refreshtoken",refreshToken,604800)
 
+ 
     
   }
 

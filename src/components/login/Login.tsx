@@ -6,7 +6,7 @@ import Link from 'next/link';
 import PasswordToggle from '../utilities/icons/PasswordToggle';
 import { loginUser } from '@/api/Auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserInfo } from '@/redux/slices/userSlice';
+import { setCurrentUserInfo, setUserInfo } from '@/redux/slices/userSlice';
 import { useAppSelector } from '@/redux/hooks/hook';
 import { useRouter } from 'next/navigation';
 
@@ -28,8 +28,10 @@ const Login:React.FC = () => {
 
  const handleClick=async(e:any)=>{
   e.preventDefault()
+  console.log("login clicked")
   let data=await loginUser(userData)
-  dispatch(setUserInfo(data))
+  console.log(data,'this is dataa')
+  dispatch(setCurrentUserInfo(data))
   router.push('/feed')
  
  }
@@ -68,7 +70,7 @@ const Login:React.FC = () => {
 
         <div className='extra'>
           <p>Don't have an account?</p>
-          <Link style={{color: 'var(--blue)', fontWeight: 600}} href='/signup'>Sign Up</Link>
+          <Link style={{color: 'var(--blue)', fontWeight: 600}} href='/register'>Sign Up</Link>
         </div>
       </form>
     </div>

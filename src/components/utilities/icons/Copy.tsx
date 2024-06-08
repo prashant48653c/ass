@@ -10,6 +10,7 @@ interface CopyProp {
 }
 const Copy: React.FC<CopyProp> = ({ desc }) => {
     const handleCopy=()=>{
+      
         copy(desc)
         console.log('copied')
     }

@@ -11,7 +11,7 @@ const PaginationUI: React.FC = () => {
  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
   setCurrentPage(value);
   console.log(value);
-  dispatch(setSearchQuery({ page: value, tags: [''], keyword: '' }));
+  dispatch(setSearchQuery({ page: value, tags: searchQuery.tags, keyword: searchQuery.keyword }));
 
 };
 

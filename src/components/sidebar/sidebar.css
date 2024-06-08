@@ -57,7 +57,10 @@
     margin-bottom: 2rem;
     padding: 1rem;
 }
-
+.tag.selected {
+    background-color: var(--purple);
+    color: white;  
+  }
 .tagbox .tag {
     padding: .6rem 1.5rem;
     font-size: 1.3rem;

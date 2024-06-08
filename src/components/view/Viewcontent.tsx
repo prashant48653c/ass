@@ -7,11 +7,13 @@ interface ViewcontentProps {
 }
 const Viewcontent: React.FC<ViewcontentProps> = ({ desc }) => {
   return (
-    <p>
-      
-      {desc}
-
-</p>
+    
+    <pre className='pre'>
+    
+    <code dangerouslySetInnerHTML={{__html:desc}} />
+    
+  </pre>
+ 
   )
 }
 

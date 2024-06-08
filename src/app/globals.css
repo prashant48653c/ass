@@ -62,6 +62,12 @@ a {
   gap: 1rem;
   align-items: center;
 }
+.pre {
+  white-space: pre-wrap;
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .btn {
   outline: none;
