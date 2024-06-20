@@ -2,17 +2,20 @@
 import { useState } from 'react'
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hook'
-import { setUserData } from '@/redux/slices/authSlice'
+import { selectLoginData, setLoginData, setUserData } from '@/redux/slices/authSlice'
+import { useSelector } from 'react-redux'
 
 
 
 const PasswordToggle: React.FC = () => {
   const [visible, setVisible] = useState(false)
   const [type, setType] = useState('password')
+  
   const dispatch = useAppDispatch()
-
+const loginData=useAppSelector(selectLoginData)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setUserData({ password: e.target.value }))
+    dispatch(setUserData({ password: e.target.value}))
+    dispatch(setLoginData({password:e.target.value,email:loginData.email}))
   }
 
   const toggleVisibility = () => {
@@ -26,6 +29,7 @@ const PasswordToggle: React.FC = () => {
         onChange={handleChange}
         type={type}
         placeholder='Password'
+        required
       />
       {
         visible ?

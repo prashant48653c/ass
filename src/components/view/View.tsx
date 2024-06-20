@@ -12,22 +12,24 @@ import Viewcontent from './Viewcontent'
 import Link from 'next/link'
 import { deleteBlog, getSingleBlog } from '@/api/Blog'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hook'
-import { selectSingleBlog, setUpdatedBlog } from '@/redux/slices/blogSlice'
+import { selectQuery, selectSingleBlog, setSearchQuery, setUpdatedBlog } from '@/redux/slices/blogSlice'
 import { useDispatch } from 'react-redux'
 import { selectCurrentUserInfo, selectIsOwner, selectUserInfo, setIsOwner, setUserInfo } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/navigation'
 import { checkData } from '@/helper/data'
+import toast from 'react-hot-toast'
 
 
 
 
 
 const View: React.FC = () => {
+ 
     const [isPause, setIsPause] = useState(true)
     const singleBlog = useAppSelector(state => state.blog.singleBlog);
     const userInfo = useAppSelector(selectUserInfo)
     const currentInfo = useAppSelector(selectCurrentUserInfo)
-
+const searchQuery=useAppSelector(selectQuery)
 
 
     const handleSound = (): void => {
@@ -43,12 +45,16 @@ const View: React.FC = () => {
     const router = useRouter()
     const dispatch = useAppDispatch()
     const handleNavigate = async () => {
-        dispatch(setIsOwner(false))
+        dispatch(setSearchQuery({ page: 1, tags: searchQuery.tags, keyword: searchQuery.keyword,user:singleBlog.user }));
+        
         dispatch(setUserInfo(userInfo))
     }
     const handleDelete = async () => {
         const id = singleBlog._id
-        await deleteBlog(id)
+        const result=await deleteBlog(id)
+        if(result){
+            toast("Deleletd")
+        }
         router.push('/profile')
     }
     const handleEdit = async () => {
@@ -85,7 +91,7 @@ const findOwner=async()=>{
 
                         <Image className='view-blog-img' style={{ borderRadius: 33, marginBottom: 15 }} width={590} height={300} src={'/blogPic.jpg'} alt='blog image' />
                         <div className="author-info-blog">
-                            <Image style={{ borderRadius: 333 }} width={50} height={50} src={'/pp.jpg'} alt='blog image' />
+                            <Image style={{ borderRadius: 333 }} width={50} height={50} src={userInfo.profilePic} alt='blog image' />
                             <div className='author-sub'>
                                 <h6>
                                     <Link onClick={handleNavigate} href={'/profile'} >{userInfo.username}</Link>

@@ -7,33 +7,47 @@ import { signUp } from '@/api/Auth'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hook'
 import { setUserData } from '@/redux/slices/authSlice'
 import { setUserInfo } from '@/redux/slices/userSlice'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { setCookie } from '@/helper/cookie'
- 
+import toast, { Toaster } from 'react-hot-toast'
+
 
 const Register: React.FC = () => {
 
-  const dispatch=useAppDispatch()
-
+  const dispatch = useAppDispatch()
+  const router = useRouter()
   const userData = useAppSelector((state) => state.auth.signup)
- 
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     dispatch(setUserData({ [name]: value }));
   };
- 
 
-  const handleSignup=async(e:any)=>{
+
+  const handleSignup = async (e: any) => {
     e.preventDefault()
 
     console.log(userData)
-  const data= await signUp(userData)
-    const {token,refreshToken}=data
-    setCookie("accesstoken",token,172800)
-    setCookie("refreshtoken",refreshToken,604800)
+    if(!userData.email || !userData.password || !userData.username){
+      console.log("Credentials missing")
+      toast.error('Credentials missing');
+      return
+    }
+    const data = await signUp(userData)
+    if(!data){
+toast.error("Registration unsuccessfull")
+    }
+    const { token, refreshToken } = data
 
- 
-    
+    if (token && refreshToken) {
+      toast.success('Registration completed! Login to continue!');
+      setCookie("accesstoken", token, 172800)
+      setCookie("refreshtoken", refreshToken, 604800)
+      router.push('/login')
+
+    } 
+
+
   }
 
   return (
@@ -70,12 +84,12 @@ const Register: React.FC = () => {
           <label htmlFor="password">Create Password</label>
           <div className='input-icon'>
             <PasswordToggle />
-            
+
           </div>
         </div>
 
         <div>
-          <button onClick={(e)=>handleSignup(e)} className="btn btnFill">Signup</button>
+          <button onClick={(e) => handleSignup(e)} className="btn btnFill">Signup</button>
         </div>
 
         <div className='extra'>
@@ -83,6 +97,7 @@ const Register: React.FC = () => {
           <Link style={{ color: 'var(--blue)', fontWeight: 600 }} href='/login'>Log in</Link>
         </div>
       </form>
+      <Toaster />
     </div>
   )
 }

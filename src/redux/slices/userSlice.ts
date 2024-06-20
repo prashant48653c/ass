@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store/store';
 
-// Define the UserInfo interface
+ 
 interface UserInfo {
   _id: string;
   password: string;
   email: string;
-  [key: string]: any; // Allows for additional properties
+  [key: string]: any;  
 }
 
 const initialState: { current: UserInfo; isOwner: boolean } = {
   current: {} as UserInfo,
-  isOwner: false,
+  isOwner: true,
 };
 
 export const userSlice = createSlice({

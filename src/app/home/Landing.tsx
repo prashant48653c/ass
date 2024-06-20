@@ -1,9 +1,12 @@
+import { PopUp } from '@/components/popup/Pop';
 import styles from './landing.module.css'
 import { FaArrowRight } from "react-icons/fa";
+import toast from 'react-hot-toast';
 
 
 
 const Landing:React.FC = () => {
+  
   return (
     <div className={styles.container} >
         <div className={styles.landDetail} >
@@ -17,7 +20,7 @@ const Landing:React.FC = () => {
         <button className={`btnFill btn ${styles.btn}`}><span>Get Started</span>
         <FaArrowRight /></button>
         </div>
-  
+         
 
     </div>
   )

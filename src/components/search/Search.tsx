@@ -16,7 +16,7 @@ const Search: React.FC = () => {
   const handleKey = async (e: any) => {
     console.log(e.nativeEvent.data)
     setKey(e.target.value)
-    dispatch(setSearchQuery({ keyword: key, tags: searchQuery.tags, page: searchQuery.page }))
+    dispatch(setSearchQuery({ keyword: key, tags: searchQuery.tags, page: searchQuery.page,user:'' }))
     if (e.key == 'Enter') {
       console.log('Enter is clicked')
 
@@ -27,7 +27,7 @@ const Search: React.FC = () => {
       <div className='search-bar'>
         <AiOutlineSearch size={24} />
         <input onChange={(e) => handleKey(e)} type="text" placeholder='Search blog' />
-        <BiSort size={24} />
+         
       </div>
 
     </div>

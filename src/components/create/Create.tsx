@@ -9,32 +9,53 @@ import { updateBlog, uploadBlog } from '@/api/Blog';
 import Tagbox from '../sidebar/Tagbox';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hook';
 import { selectCurrentUserInfo, selectUserInfo } from '@/redux/slices/userSlice';
-import { selectUpdatedBlog } from '@/redux/slices/blogSlice';
+import { selectUpdatedBlog, setUpdatedBlog } from '@/redux/slices/blogSlice';
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { checkData } from '@/helper/data';
 
 const Create = () => {
-const [value, setValue] = useState('');
+const [value, setValue] = useState<string>('');
 const updatedBlog = useAppSelector(selectUpdatedBlog)
-const [title, setTitle] = useState("");
+const [title, setTitle] = useState<string>("");
 const [selectedTags, setSelectedTags] = useState<string[]>([])
 const userInfo = useAppSelector(selectCurrentUserInfo)
-
+const router=useRouter()
 
  
 
 
 const handleUpload = async (e: any) => {
-e.preventDefault();
  
+e.preventDefault();
+ if(selectedTags.length < 1){
+    toast.error("😊 Select atleast one tag!")
+    return
+ }
 const authorName = userInfo.username
-if(updatedBlog && updatedBlog.blog){
-    const id=updatedBlog._id
+ console.log(updatedBlog,"updated")
+if(updatedBlog?._id){
+const id=updatedBlog._id
+
 await updateBlog({title,desc:value,selectedTags,authorName,id})
+toast.success("Updated Successfully")
 }else{
-    await uploadBlog({ title, desc: value, selectedTags, authorName });
+   const result:any= await uploadBlog({ title, desc: value, selectedTags, authorName });
+   if(result._id){
+    toast.success("Uploaded succesfully")
+  
+   }else{
+    toast.error("Guess you missed something!")
+   }
+    
 
 }
-
+router.push("/feed")
 }
+
+
+
+
 const tags = [
 { tag: 'Tech' },
 { tag: 'Beauty' },
@@ -48,7 +69,8 @@ const tags = [
 const dispatch = useAppDispatch()
 
 const handleClick = (e: any) => {
-
+   
+ 
 const tag = e.target.textContent
 if (selectedTags.includes(tag)) {
 
@@ -64,9 +86,11 @@ setSelectedTags(updatedTags)
 }
 
 useEffect(()=>{
+     
 if(updatedBlog){
     setValue(updatedBlog.desc)
     setTitle(updatedBlog.head)
+    
 }
 },[])
 
@@ -97,6 +121,7 @@ className={`tag ${selectedTags.includes(tag.tag) ? 'selected' : ''}`}
 <button onClick={handleUpload} className="btn btnFill btn-upload">Upload
 <AiOutlineUpload size={18} />
 </button>
+<Toaster/>
 </div>
 );
 }

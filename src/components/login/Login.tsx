@@ -6,48 +6,62 @@ import Link from 'next/link';
 import PasswordToggle from '../utilities/icons/PasswordToggle';
 import { loginUser } from '@/api/Auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUserInfo, setUserInfo } from '@/redux/slices/userSlice';
+import { selectUserInfo, setCurrentUserInfo, setUserInfo } from '@/redux/slices/userSlice';
 import { useAppSelector } from '@/redux/hooks/hook';
 import { useRouter } from 'next/navigation';
+import { PopUp } from '../popup/Pop';
+import toast, { Toaster } from 'react-hot-toast';
+import { selectLoginData, setLoginData, setUserData } from '@/redux/slices/authSlice';
 
 
-const Login:React.FC = () => {
-  const router=useRouter()
-  const dispatch=useDispatch()
-  const userInfo=useAppSelector((state)=>state.user)
-  const [userData, setUserData] = useState({ email: '', password: 'aaaaaa' });
 
+const Login: React.FC = () => {
+  const router = useRouter()
+  const dispatch = useDispatch()
+  const userInfo = useAppSelector(selectUserInfo)
+  const [userData, setUserData] = useState({ email: '', password: '' })
+  const loginData = useAppSelector(selectLoginData)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    dispatch(setLoginData({ password: loginData.password, email: e.target.value }))
+
 
   };
 
- const handleClick=async(e:any)=>{
-  e.preventDefault()
-  console.log("login clicked")
-  let data=await loginUser(userData)
-  console.log(data,'this is dataa')
-  dispatch(setCurrentUserInfo(data))
-  router.push('/feed')
- 
- }
-   return (
+  const handleClick = async (e: any) => {
+    e.preventDefault()
+if(!loginData.email && !loginData.password){
+console.log('Credentials missing!')
+toast.error('Credentials missing!');
+return
+}
+    let data = await loginUser(loginData)
+    if (data?._id) {
+      dispatch(setCurrentUserInfo(data))
+      toast.success("Logined succesfully")
+      dispatch(setLoginData({ email: '', password: '' }))
+      router.push('/feed')
+      
+    }else{
+      toast.error(data)
+    }
+   
+
+
+  }
+  return (
     <div className='auth-box'>
       <h5>Log in</h5>
       <form action="" className="login-form">
         <div className="login-input">
           <label htmlFor="email">Email</label>
           <div className="input-icon">
-            <input 
-              type="email" 
+            <input
+              required
+              type="email"
               name="email"
-              placeholder='Email' 
-              value={userData.email} 
-              onChange={handleChange} 
+              placeholder='Email'
+
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -58,21 +72,23 @@ const Login:React.FC = () => {
             <PasswordToggle />
           </div>
         </div>
-        
+
         <div>
-          <button onClick={e=>handleClick(e)} className="btn btnFill">Login</button>
-          <div style={{textAlign: 'center', margin: '1rem 0'}}>
+          <button onClick={e => handleClick(e)} className="btn btnFill">Login</button>
+          <div style={{ textAlign: 'center', margin: '1rem 0' }}>
             <Link href={'/forgot'} className="btn btnOutline">Forgot Password?</Link>
           </div>
         </div>
-        
-        <hr style={{color: '#ccc'}} />
+
+        <hr style={{ color: '#ccc' }} />
 
         <div className='extra'>
           <p>Don't have an account?</p>
-          <Link style={{color: 'var(--blue)', fontWeight: 600}} href='/register'>Sign Up</Link>
+          <Link style={{ color: 'var(--blue)', fontWeight: 600 }} href='/register'>Sign Up</Link>
         </div>
       </form>
+      <Toaster />
+
     </div>
   );
 };

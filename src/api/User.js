@@ -4,7 +4,13 @@ import { getCookie, setCookie } from "@/helper/cookie";
 
 export async function getSingleUser(id) {
   try {
-    const response = await axios.get(`http://localhost:4000/author/${id}`);
+    const accesstoken = await getCookie('accesstoken')
+
+    const response = await axios.get(`http://localhost:4000/author/${id}`, {
+      headers: {
+        Authorization: `Bearer ${accesstoken}`
+      }
+    });
     const data = response.data;
     return data;
   } catch (err) {
@@ -14,10 +20,12 @@ export async function getSingleUser(id) {
 
 }
 
- 
+
 
 export async function updateUser({ username, id, desc }) {
   try {
+    const accesstoken = await getCookie('accesstoken')
+
     const response = await axios.put('http://localhost:4000/author', {
       username,
       id,
@@ -25,7 +33,7 @@ export async function updateUser({ username, id, desc }) {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+        Authorization: `Bearer ${accesstoken}`
       }
     });
 
@@ -43,8 +51,28 @@ export async function updateUser({ username, id, desc }) {
   }
 }
 
+export async function updatePP(file, _id) {
 
- 
+  console.log(file)
+  const accesstoken = await getCookie('accesstoken')
+  const formData = new FormData();
+  formData.append('file', file)
+
+  const res = await axios.patch(`http://localhost:4000/author/${_id}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${accesstoken}`
+    },
+
+  });
+  const localData = JSON.stringify(res.data);
+  localStorage.setItem('userData', localData);
+
+  console.log(res.data);
+}
+
+
+
 
 
 export async function getRefresh() {

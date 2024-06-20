@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './sidebar.css'
 import { selectQuery, setSearchQuery } from '@/redux/slices/blogSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hook'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Tagbox: React.FC = () => {
   const tags = [
@@ -22,13 +23,14 @@ const Tagbox: React.FC = () => {
 
   const handleClick = (e: any) => {
     const tag = e.target.textContent
-
+    toast.success("Filtering with tag")
     
     if (selectedTags.includes(tag)) {
       
       const updatedTags = selectedTags.filter(t => t !== tag)
       setSelectedTags(updatedTags)
       dispatch(setSearchQuery({ ...searchQuery, tags: updatedTags }))
+    
     } else {
      
       const updatedTags = [...selectedTags, tag]
@@ -53,6 +55,7 @@ const Tagbox: React.FC = () => {
           ))
         }
       </div>
+      <Toaster/>
     </div>
   )
 }

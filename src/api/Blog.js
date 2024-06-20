@@ -1,5 +1,6 @@
 import { getCookie } from "@/helper/cookie"
 import axios from 'axios'
+import toast from "react-hot-toast";
  
 export async function uploadBlog(blogData) {
   console.log("Upload function running");
@@ -21,20 +22,24 @@ export async function uploadBlog(blogData) {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
+          Authorization: `Bearer ${accessToken}`
         }
       }
     );
 console.log(response)
-    if (response.status === 200) {
+    if (response) {
       const data = response.data;
       console.log(data);
+  
+
       return data;
     } else {
       console.log("Error: Response not OK");
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Errodfsdfdsfr:", error);
+ console.log(error.response.data.message[0])
+    return error.response.data.message[0]
   }
 }
 
@@ -43,18 +48,23 @@ console.log(response)
 
 export async function getAllBlog(query) {
   try {
+    const accesstoken = await getCookie('accesstoken');
     console.log(query);
     const { page, user, keyword, tags } = query;
     const url = new URL('http://localhost:4000/blogs');
     url.searchParams.append('page', page);
-    if (user) url.searchParams.append('user', user);
+    if (user !="") url.searchParams.append('user', user);
     if (tags != "" && tags != undefined) {
       tags.forEach(tag => url.searchParams.append('tags[]', tag));
     }
     if (keyword) url.searchParams.append('keyword', keyword);
     console.log(url);
 
-    const response = await axios.get(url.toString());
+    const response = await axios.get(url.toString(),{
+      headers:{
+        Authorization:`Bearer ${accesstoken}`
+      }
+    });
 
     if (response.status !== 200) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -73,7 +83,12 @@ export async function getAllBlog(query) {
  
 export async function getSingleBlog(id) {
   try {
-    const response = await axios.get(`http://localhost:4000/blogs/${id}`);
+    const accesstoken = await getCookie('accesstoken');
+    const response = await axios.get(`http://localhost:4000/blogs/${id}`,{
+      headers:{
+        Authorization: `Bearer ${accesstoken}`
+      }
+    });
     if (response.status !== 200) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -95,7 +110,7 @@ export async function deleteBlog(id) {
     const response = await axios.delete(`http://localhost:4000/blogs/${id}`, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accesstoken}`
+        Authorization: `Bearer ${accesstoken}`
       }
     });
 
@@ -123,7 +138,7 @@ export async function updateBlog(blogdata) {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getCookie('accesstoken')}`
+        Authorization: `Bearer ${getCookie('accesstoken')}`
       }
     });
 
