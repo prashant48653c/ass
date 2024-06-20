@@ -23,7 +23,11 @@ const userInfo = useAppSelector(selectCurrentUserInfo)
 const router=useRouter()
 
  
-
+useEffect(() => {
+   if (!userInfo) {
+     router.push('/login')
+   }
+ }, [])
 
 const handleUpload = async (e: any) => {
  
