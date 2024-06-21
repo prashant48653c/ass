@@ -75,9 +75,7 @@ return
 
         <div>
           <button onClick={e => handleClick(e)} className="btn btnFill">Login</button>
-          <div style={{ textAlign: 'center', margin: '1rem 0' }}>
-            <Link href={'/forgot'} className="btn btnOutline">Forgot Password?</Link>
-          </div>
+         
         </div>
 
         <hr style={{ color: '#ccc' }} />
