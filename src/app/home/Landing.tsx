@@ -1,4 +1,4 @@
-import { PopUp } from '@/components/popup/Pop';
+ 
 import styles from './landing.module.css'
 import { FaArrowRight } from "react-icons/fa";
 import toast from 'react-hot-toast';

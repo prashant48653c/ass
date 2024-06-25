@@ -1,16 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store/store';
+import { USERTYPE } from '@/helper/types';
+
 
  
-interface UserInfo {
-  _id: string;
-  password: string;
-  email: string;
-  [key: string]: any;  
-}
 
-const initialState: { current: UserInfo; isOwner: boolean } = {
-  current: {} as UserInfo,
+const initialState: { current: USERTYPE; isOwner: boolean } = {
+  current: {} as USERTYPE,
   isOwner: true,
 };
 
@@ -18,11 +14,11 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserInfo: (state, action: PayloadAction<UserInfo>) => {
-      state.current = action.payload; // Directly update the `current` field
+    setUserInfo: (state, action: PayloadAction<USERTYPE>) => {
+      state.current = action.payload;  
     },
-    setCurrentUserInfo: (state, action: PayloadAction<UserInfo>) => {
-      state.current = action.payload; // This might be redundant with setUserInfo
+    setCurrentUserInfo: (state, action: PayloadAction<USERTYPE>) => {
+      state.current = action.payload; 
     },
     setIsOwner: (state, action: PayloadAction<boolean>) => {
       state.isOwner = action.payload;

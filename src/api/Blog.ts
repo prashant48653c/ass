@@ -1,8 +1,9 @@
 import { getCookie } from "@/helper/cookie"
+import { BLOGTYPE, QUERYTYPE, UPDATEBLOGTYPE } from "@/helper/types";
 import axios from 'axios'
-import toast from "react-hot-toast";
+
  
-export async function uploadBlog(blogData) {
+export async function uploadBlog(blogData:UPDATEBLOGTYPE) {
   console.log("Upload function running");
   
   const { title, desc, selectedTags, authorName } = blogData;
@@ -36,7 +37,7 @@ console.log(response)
     } else {
       console.log("Error: Response not OK");
     }
-  } catch (error) {
+  } catch (error:any) {
     console.error("Errodfsdfdsfr:", error);
  console.log(error.response.data.message[0])
     return error.response.data.message[0]
@@ -46,7 +47,7 @@ console.log(response)
  
  
 
-export async function getAllBlog(query) {
+export async function getAllBlog(query:QUERYTYPE):Promise<BLOGTYPE[]> {
   try {
     const accesstoken = await getCookie('accesstoken');
     console.log(query);
@@ -55,7 +56,7 @@ export async function getAllBlog(query) {
     url.searchParams.append('page', page);
     if (user !="") url.searchParams.append('user', user);
     if (tags != "" && tags != undefined) {
-      tags.forEach(tag => url.searchParams.append('tags[]', tag));
+      tags.forEach((tag:string) => url.searchParams.append('tags[]', tag));
     }
     if (keyword) url.searchParams.append('keyword', keyword);
     console.log(url);
@@ -81,7 +82,7 @@ export async function getAllBlog(query) {
 
   
  
-export async function getSingleBlog(id) {
+export async function getSingleBlog(id:string):Promise<BLOGTYPE> {
   try {
     const accesstoken = await getCookie('accesstoken');
     const response = await axios.get(`http://localhost:4000/blogs/${id}`,{
@@ -104,7 +105,7 @@ export async function getSingleBlog(id) {
   
 
  
-export async function deleteBlog(id) {
+export async function deleteBlog(id:string) {
   try {
     const accesstoken = await getCookie('accesstoken');
     const response = await axios.delete(`http://localhost:4000/blogs/${id}`, {
@@ -126,7 +127,7 @@ export async function deleteBlog(id) {
 
   
  
-export async function updateBlog(blogdata) {
+export async function updateBlog(blogdata:UPDATEBLOGTYPE) {
   const { title, desc, authorName, selectedTags, id } = blogdata;
   try {
     const response = await axios.put(`http://localhost:4000/blogs/${id}`, {

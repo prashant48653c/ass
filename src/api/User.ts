@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { getCookie, setCookie } from "@/helper/cookie";
+import { UPDATEUSERTYPE } from '@/helper/types';
 
 
-export async function getSingleUser(id) {
+export async function getSingleUser(id:any) {
   try {
     const accesstoken = await getCookie('accesstoken')
 
@@ -22,7 +23,7 @@ export async function getSingleUser(id) {
 
 
 
-export async function updateUser({ username, id, desc }) {
+export async function updateUser({ username, id, desc }:UPDATEUSERTYPE) {
   try {
     const accesstoken = await getCookie('accesstoken')
 
@@ -51,7 +52,7 @@ export async function updateUser({ username, id, desc }) {
   }
 }
 
-export async function updatePP(file, _id) {
+export async function updatePP(file:File, _id:string) {
 
   console.log(file)
   const accesstoken = await getCookie('accesstoken')
@@ -87,8 +88,13 @@ export async function getRefresh() {
         });
         const data = response.data;
         console.log(data);
-        setCookie('accesstoken', data.accessToken, 172800);
-        setCookie('refreshtoken', data.refreshToken, 604800);
+        if(data.accessToken){
+          setCookie('accesstoken', data.accessToken, 172800);
+        }
+        if(data.refreshToken){
+
+          setCookie('refreshtoken', data.refreshToken, 604800);
+        }
       } catch (error) {
         console.log("Error:", error);
       }

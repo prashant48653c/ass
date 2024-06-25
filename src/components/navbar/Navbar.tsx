@@ -7,32 +7,33 @@ import { selectCurrentUserInfo, selectUserInfo, setCurrentUserInfo, setIsOwner, 
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { checkData } from '@/helper/data';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FiMenu } from "react-icons/fi";
 import { logOut } from '@/api/Auth';
 import { getRefresh } from '@/api/User';
 import { getCookie } from '@/helper/cookie';
 import { setSearchQuery } from '@/redux/slices/blogSlice';
- 
+import { USERTYPE } from '@/helper/types';
+
 
 const Navbar = () => {
     const currentInfo = useAppSelector(selectCurrentUserInfo);
     const dispatch = useAppDispatch();
     const router = useRouter()
     const userInfo = useAppSelector(selectUserInfo);
-const [show,setShow]=useState<boolean>(false)
+    const [show, setShow] = useState<boolean>(false)
     const retrieveData = async () => {
-        const data = await checkData();
+        const data: USERTYPE = await checkData();
         console.log(data)
         dispatch(setCurrentUserInfo(data));
     };
 
-    const goToProfile = () => {
-        retrieveData()
+    const goToProfile = async () => {
+        await retrieveData()
         dispatch(setIsOwner(true))
         dispatch(setUserInfo(currentInfo))
-        
-        dispatch(setSearchQuery({user:'', page: 1, tags:[], keyword: '' }));
+
+        dispatch(setSearchQuery({ user: '', page: 1, tags: [], keyword: '' }));
         console.log(currentInfo, "Userinfo")
         router.push('profile')
 
@@ -44,18 +45,30 @@ const [show,setShow]=useState<boolean>(false)
         window.location.reload();
 
     }
-const handleToggle=()=>{
-setShow(!show)
-}
+    const handleToggle = () => {
+        setShow(!show)
+    }
+    const pathname = usePathname();
+    
     useEffect(() => {
-        const aToken = getCookie('accesstoken')
-        if (!aToken) {
-            getRefresh()
-            console.log("Refresh running")
+        const handleRouteChange = () => {
+            const aToken = getCookie('accesstoken');
+            if (!aToken) {
+                getRefresh();
+                console.log("Refresh running");
+            }
+            retrieveData();
+        };
 
-        }
-        retrieveData();
-    }, [dispatch]);
+        console.log("SCANNING FOR ACCESS TOKEN");
+        handleRouteChange();
+
+      
+    }, [pathname]);
+
+
+
+
 
     useEffect(() => {
         console.log(currentInfo);
@@ -73,23 +86,23 @@ setShow(!show)
             {
                 show &&
                 <ul className="nav-links-mob">
-                <Links />
-                
-            </ul>
+                    <Links />
+
+                </ul>
             }
-          
+
             <div className="nav-btns">
-            <FiMenu className='menu-icon' onClick={handleToggle} size={24} />
+                <FiMenu className='menu-icon' onClick={handleToggle} size={24} />
                 {currentInfo ? (
                     <>
-                   
-                        
+
+
                         <button onClick={goToProfile} className="btnFill btn" style={{ alignItems: 'center', display: 'flex', gap: '.3rem' }} >
-                        <MdOutlineAccountCircle size={18} />
-                        Profile
-                    </button>
-                  
-                     
+                            <MdOutlineAccountCircle size={18} />
+                            Profile
+                        </button>
+
+
 
                         <button onClick={handleLogOut} className="btn btnFill">Logout</button>
                     </>

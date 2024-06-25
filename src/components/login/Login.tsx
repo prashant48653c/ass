@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo, setCurrentUserInfo, setUserInfo } from '@/redux/slices/userSlice';
 import { useAppSelector } from '@/redux/hooks/hook';
 import { useRouter } from 'next/navigation';
-import { PopUp } from '../popup/Pop';
+ 
 import toast, { Toaster } from 'react-hot-toast';
 import { selectLoginData, setLoginData, setUserData } from '@/redux/slices/authSlice';
 
@@ -18,8 +18,6 @@ import { selectLoginData, setLoginData, setUserData } from '@/redux/slices/authS
 const Login: React.FC = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const userInfo = useAppSelector(selectUserInfo)
-  const [userData, setUserData] = useState({ email: '', password: '' })
   const loginData = useAppSelector(selectLoginData)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setLoginData({ password: loginData.password, email: e.target.value }))
@@ -27,7 +25,7 @@ const Login: React.FC = () => {
 
   };
 
-  const handleClick = async (e: any) => {
+  const handleClick = async (e:any) => {
     e.preventDefault()
 if(!loginData.email && !loginData.password){
 console.log('Credentials missing!')

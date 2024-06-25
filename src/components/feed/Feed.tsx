@@ -30,11 +30,12 @@ user: {}
 const FeedSingle: React.FC<FEEDDATAPROP> = ({ blog }) => {
 const dispatch = useAppDispatch()
 const router = useRouter()
+
 const navigate = async () => {
 console.log(blog._id)
 let id = blog._id
 let userId=blog.user
-
+console.log(userId)
 let data = await getSingleBlog(id)
 let user = await getSingleUser(userId)
 
@@ -70,7 +71,7 @@ return (
 </div>
 <div className="blog-info">
 <div className="blog-author">
-<Image alt='author image' className='author-img' width={30} height={30} src={'/pp2.png'} />
+<Image alt='author image' className='author-img' width={30} height={30} src={blogPic} />
  
 <div className="tags">
 {

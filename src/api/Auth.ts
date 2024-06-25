@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { clearAllCookies, getCookie, setCookie } from '@/helper/cookie';
-
-export async function loginUser(userData) {
+import {LOGINTYPE, SIGNUPTYPE} from '@/helper/types'
+export async function loginUser(userData:LOGINTYPE) {
   try {
      
 
@@ -22,7 +22,7 @@ export async function loginUser(userData) {
     } else {
       console.log("Error at login");
     }
-  } catch (err) {
+  } catch (err:any) {
     console.log("The error occurred at login route", err);
     return err.response.data.message
   }
@@ -31,7 +31,7 @@ export async function loginUser(userData) {
 
 
 
-export async function signUp(userData) {
+export async function signUp(userData:SIGNUPTYPE) {
   const { username, email, password } = userData;
   console.log("Inside the signup function", userData);
   
@@ -71,7 +71,7 @@ const accesstoken=getCookie('accesstoken')
 
     if (response) {
       const data = response.data;
-     await localStorage.clear('userData');
+     await localStorage.clear();
      await clearAllCookies()
       console.log(data);
 

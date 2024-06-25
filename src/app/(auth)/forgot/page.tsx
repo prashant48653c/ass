@@ -1,7 +1,7 @@
 'use client'
 
 import PasswordToggle from '@/components/utilities/icons/PasswordToggle'
-import Link from 'next/link'
+
 import '../../../components/login/login.css'
 import { MuiOtpInput } from 'mui-one-time-password-input'
 import { useState } from 'react'

@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store/store';
+import { BLOGTYPE } from '@/helper/types';
 
 interface BlogState {
-  blogs: any[];
-  singleBlog: any | null;
+  blogs: BLOGTYPE[];
+  singleBlog: BLOGTYPE | null;
   searchQuery: {
     page: number;
     tags: string[];
@@ -31,10 +32,10 @@ export const blogSlice = createSlice({
   name: 'blog',
   initialState,
   reducers: {
-    setBlogInfo: (state, action: PayloadAction<{ blogs: any[] }>) => {
+    setBlogInfo: (state, action: PayloadAction<{ blogs: BLOGTYPE[] }>) => {
       state.blogs = action.payload.blogs;
     },
-    setSingleBlog: (state, action: PayloadAction<{ blog: any[] | null }>) => {
+    setSingleBlog: (state, action: PayloadAction<{ blog: BLOGTYPE | null }>) => {
       state.singleBlog = action.payload.blog;
     },
     setSearchQuery: (state, action: PayloadAction<{ page: number; tags: string[]; keyword: string;user:string }>) => {
